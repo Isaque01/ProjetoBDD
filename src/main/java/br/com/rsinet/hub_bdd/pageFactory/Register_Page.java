@@ -54,52 +54,52 @@ public class Register_Page {
 	@FindBy(how = How.ID, using = "register_btnundefined")
 	private WebElement btnRegister;
 
-	public void enterUsername(String userName) {
+	public void entreUsername(String userName) {
 		bxUsername.sendKeys(userName);
 	}
 
-	public void enterEmail(String email) {
+	public void entreEmail(String email) {
 		bxEmail.sendKeys(email);
 	}
 
-	public void enterPassword(String password) {
+	public void entrePassword(String password) {
 		bxPassword.sendKeys(password);
 	}
 
-	public void enterConfirmPassword(String confirmPassword) {
+	public void entreConfirmPassword(String confirmPassword) {
 		bxConfirmPassword.sendKeys(confirmPassword);
 	}
 
-	public void enterFirstName(String firstName) {
+	public void entreFirstName(String firstName) {
 		bxFirstName.sendKeys(firstName);
 	}
 
-	public void enterLastName(String lastName) {
+	public void entreLastName(String lastName) {
 		bxLastName.sendKeys(lastName);
 	}
 
-	public void enterPhone(String phone) {
+	public void entrePhone(String phone) {
 		bxPhone.sendKeys(phone);
 	}
 
-	public void enterCountry(String country) {
+	public void entreCountry(String country) {
 		Select selectCountry = new Select(bxCountry);
 		selectCountry.selectByVisibleText(country);
 	}
 
-	public void enterCity(String city) {
+	public void entreCity(String city) {
 		bxCity.sendKeys(city);
 	}
 
-	public void enterAddress(String adress) {
+	public void entreAddress(String adress) {
 		bxAdress.sendKeys(adress);
 	}
 
-	public void enterState(String state) {
+	public void entreState(String state) {
 		bxState.sendKeys(state);
 	}
 
-	public void enterPostal(String postal) {
+	public void entrePostal(String postal) {
 		bxPostal.sendKeys(postal);
 	}
 
@@ -114,32 +114,32 @@ public class Register_Page {
 	}
 
 	public void fill_AccountDetails() {
-		enterUsername("Isaque");
-		enterEmail("isaque.silva@rsinet.com.br");
-		enterPassword("Concret03");
-		enterConfirmPassword("Concret03");
+		entreUsername("Isaque");
+		entreEmail("isaque.silva@rsinet.com.br");
+		entrePassword("Concret03");
+		entreConfirmPassword("Concret03");
 	}
 	
 	public void fill_InvalidAccountDetails() {
-		enterUsername("Isaque");
-		enterEmail("isaque.silva@rsinet.com.br");
-		enterPassword("Concret03");
-		enterConfirmPassword("Concret03");
+		entreUsername("Isaque");
+		entreEmail("isaque.silva@rsinet.com.br");
+		entrePassword("Concret03");
+		entreConfirmPassword("Concret03");
 	}
 
 	public void fillPersonalDetails() {
-		enterFirstName("isaque");
-		enterLastName("Silva");
-		enterPhone("11982397940");
+		entreFirstName("isaque");
+		entreLastName("Silva");
+		entrePhone("11982397940");
 	}
 
 	public void fillAddress() {
 
-		enterCity("Barueri");
-		enterAddress("Rua: Juliana");
-		enterPostal("06436350");
-		enterState("SP");
-		enterCountry("Brazil");
+		entreCity("Barueri");
+		entreAddress("Rua: Juliana");
+		entrePostal("06436350");
+		entreState("SP");
+		entreCountry("Brazil");
 	}
 }
 
