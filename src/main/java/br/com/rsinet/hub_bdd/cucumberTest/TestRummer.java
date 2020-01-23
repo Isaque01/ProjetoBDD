@@ -1,4 +1,4 @@
-package br.com.rsinet.hub_bdd.Test;
+package br.com.rsinet.hub_bdd.cucumberTest;
 
 import org.junit.runner.RunWith;
 

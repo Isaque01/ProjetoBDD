@@ -13,40 +13,40 @@ public class Register_Page {
 	}
 
 	@FindBy(how = How.NAME, using = "usernameRegisterPage")
-	private WebElement bxUsername;
+	private WebElement txtbxUsername;
 
 	@FindBy(how = How.NAME, using = "emailRegisterPage")
-	private WebElement bxEmail;
+	private WebElement txtbxEmail;
 
 	@FindBy(how = How.NAME, using = "passwordRegisterPage")
-	private WebElement bxPassword;
+	private WebElement txtbxPassword;
 
 	@FindBy(how = How.NAME, using = "confirm_passwordRegisterPage")
-	private WebElement bxConfirmPassword;
+	private WebElement txtbxConfirmPassword;
 
 	@FindBy(how = How.NAME, using = "first_nameRegisterPage")
-	private WebElement bxFirstName;
+	private WebElement txtbxFirstName;
 
 	@FindBy(how = How.NAME, using = "last_nameRegisterPage")
-	private WebElement bxLastName;
+	private WebElement txtbxLastName;
 
 	@FindBy(how = How.NAME, using = "phone_numberRegisterPage")
-	private WebElement bxPhone;
+	private WebElement txtbxPhone;
 
 	@FindBy(how = How.NAME, using = "countryListboxRegisterPage")
-	private WebElement bxCountry;
+	private WebElement listbxCountry;
 
 	@FindBy(how = How.NAME, using = "cityRegisterPage")
-	private WebElement bxCity;
+	private WebElement txtbxCity;
 
 	@FindBy(how = How.NAME, using = "addressRegisterPage")
-	private WebElement bxAdress;
+	private WebElement txtbxAdress;
 
 	@FindBy(how = How.NAME, using = "state_/_province_/_regionRegisterPage")
-	private WebElement bxState;
+	private WebElement txtbxState;
 
 	@FindBy(how = How.NAME, using = "postal_codeRegisterPage")
-	private WebElement bxPostal;
+	private WebElement txtbxPostal;
 
 	@FindBy(how = How.NAME, using = "i_agree")
 	private WebElement chkAgree;
@@ -55,52 +55,52 @@ public class Register_Page {
 	private WebElement btnRegister;
 
 	public void entreUsername(String userName) {
-		bxUsername.sendKeys(userName);
+		txtbxUsername.sendKeys(userName);
 	}
 
 	public void entreEmail(String email) {
-		bxEmail.sendKeys(email);
+		txtbxEmail.sendKeys(email);
 	}
 
 	public void entrePassword(String password) {
-		bxPassword.sendKeys(password);
+		txtbxPassword.sendKeys(password);
 	}
 
 	public void entreConfirmPassword(String confirmPassword) {
-		bxConfirmPassword.sendKeys(confirmPassword);
+		txtbxConfirmPassword.sendKeys(confirmPassword);
 	}
 
 	public void entreFirstName(String firstName) {
-		bxFirstName.sendKeys(firstName);
+		txtbxFirstName.sendKeys(firstName);
 	}
 
 	public void entreLastName(String lastName) {
-		bxLastName.sendKeys(lastName);
+		txtbxLastName.sendKeys(lastName);
 	}
 
 	public void entrePhone(String phone) {
-		bxPhone.sendKeys(phone);
+		txtbxPhone.sendKeys(phone);
 	}
 
 	public void entreCountry(String country) {
-		Select selectCountry = new Select(bxCountry);
+		Select selectCountry = new Select(listbxCountry);
 		selectCountry.selectByVisibleText(country);
 	}
 
 	public void entreCity(String city) {
-		bxCity.sendKeys(city);
+		txtbxCity.sendKeys(city);
 	}
 
 	public void entreAddress(String adress) {
-		bxAdress.sendKeys(adress);
+		txtbxAdress.sendKeys(adress);
 	}
 
 	public void entreState(String state) {
-		bxState.sendKeys(state);
+		txtbxState.sendKeys(state);
 	}
 
 	public void entrePostal(String postal) {
-		bxPostal.sendKeys(postal);
+		txtbxPostal.sendKeys(postal);
 	}
 
 	public void clickAgree(boolean value) {
@@ -123,8 +123,8 @@ public class Register_Page {
 	public void fill_InvalidAccountDetails() {
 		entreUsername("Isaque");
 		entreEmail("isaque.silva@rsinet.com.br");
-		entrePassword("Concret03");
-		entreConfirmPassword("Concret03");
+		entrePassword("12345");
+		entreConfirmPassword("12345");
 	}
 
 	public void fillPersonalDetails() {
