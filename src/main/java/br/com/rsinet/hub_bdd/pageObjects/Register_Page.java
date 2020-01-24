@@ -1,4 +1,4 @@
-package br.com.rsinet.hub_bdd.pageFactory;
+package br.com.rsinet.hub_bdd.pageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -54,95 +54,96 @@ public class Register_Page {
 	@FindBy(how = How.ID, using = "register_btnundefined")
 	private WebElement btnRegister;
 
-	public void entreUsername(String userName) {
+	public void enter_Username(String userName) {
 		txtbxUsername.sendKeys(userName);
 	}
 
-	public void entreEmail(String email) {
+	public void enter_Email(String email) {
 		txtbxEmail.sendKeys(email);
 	}
 
-	public void entrePassword(String password) {
+	public void enter_Password(String password) {
 		txtbxPassword.sendKeys(password);
 	}
 
-	public void entreConfirmPassword(String confirmPassword) {
+	public void enter_ConfirmPassword(String confirmPassword) {
 		txtbxConfirmPassword.sendKeys(confirmPassword);
 	}
 
-	public void entreFirstName(String firstName) {
+	public void enter_FirstName(String firstName) {
 		txtbxFirstName.sendKeys(firstName);
 	}
 
-	public void entreLastName(String lastName) {
+	public void enter_LastName(String lastName) {
 		txtbxLastName.sendKeys(lastName);
 	}
 
-	public void entrePhone(String phone) {
+	public void enter_Phone(String phone) {
 		txtbxPhone.sendKeys(phone);
 	}
 
-	public void entreCountry(String country) {
+	public void enter_Country(String country) {
 		Select selectCountry = new Select(listbxCountry);
 		selectCountry.selectByVisibleText(country);
 	}
 
-	public void entreCity(String city) {
+	public void enter_City(String city) {
 		txtbxCity.sendKeys(city);
 	}
 
-	public void entreAddress(String adress) {
+	public void enter_Address(String adress) {
 		txtbxAdress.sendKeys(adress);
 	}
 
-	public void entreState(String state) {
+	public void enter_State(String state) {
 		txtbxState.sendKeys(state);
 	}
 
-	public void entrePostal(String postal) {
+	public void enter_Postal(String postal) {
 		txtbxPostal.sendKeys(postal);
 	}
 
-	public void clickAgree(boolean value) {
-		if (value)
-			chkAgree.click();
+	public void clickAgree() {
+
+		chkAgree.click();
 	}
 
-	public void clickBtnRegister(boolean value) {
-		if (value)
-			btnRegister.click();
+	public void clickBtnRegister() {
+
+		btnRegister.click();
 	}
 
-	public void fill_AccountDetails() {
-		entreUsername("Isaque");
-		entreEmail("isaque.silva@rsinet.com.br");
-		entrePassword("Concret03");
-		entreConfirmPassword("Concret03");
+	public void CadastroSucesso() {
+		enter_Username("Isaque478");
+		enter_Email("isaque.silva@rsinet.com.br");
+		enter_Password("Concret03");
+		enter_ConfirmPassword("Concret03");
+		enter_FirstName("Isaque");
+		enter_LastName("Silva");
+		enter_Phone("11982397940");
+		enter_Country("Brazil");
+		enter_City("Barueri");
+		enter_Address("Rua: Juliana N°78");
+		enter_State("Sao Paulo");
+		enter_Postal("06436350");
+		clickAgree();
+		clickBtnRegister();
+	}
+	public void CadastroErro() {
+		enter_Username("Isaque");
+		enter_Email("isaque.silva@rsinet.com.br");
+		enter_Password("Concret03");
+		enter_ConfirmPassword("Concret03");
+		enter_FirstName("Isaque");
+		enter_LastName("Silva");
+		enter_Phone("11982397940");
+		enter_Country("Brazil");
+		enter_City("Barueri");
+		enter_Address("Rua: Juliana N°78");
+		enter_State("Sao Paulo");
+		enter_Postal("06436350");
+		clickAgree();
+		clickBtnRegister();
 	}
 	
-	public void fill_InvalidAccountDetails() {
-		entreUsername("Isaque");
-		entreEmail("isaque.silva@rsinet.com.br");
-		entrePassword("12345");
-		entreConfirmPassword("12345");
-	}
-
-	public void fillPersonalDetails() {
-		entreFirstName("isaque");
-		entreLastName("Silva");
-		entrePhone("11982397940");
-	}
-
-	public void fillAddress() {
-
-		entreCity("Barueri");
-		entreAddress("Rua: Juliana");
-		entrePostal("06436350");
-		entreState("SP");
-		entreCountry("Brazil");
-	}
 }
-
-	
-
-
