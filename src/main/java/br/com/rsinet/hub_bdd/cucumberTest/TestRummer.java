@@ -8,7 +8,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "Feature"
 , glue = { "br.com.rsinet.hub_bdd.stepDefinitions" },
-tags = {"@Buscadeprodutos , @Buscadeprodutoerro "})
+tags = {"@Buscaprodutoimageminvalido"})
 public class TestRummer {
 
 }
