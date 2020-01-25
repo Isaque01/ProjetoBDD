@@ -114,7 +114,7 @@ public class Register_Page {
 	}
 
 	public void CadastroSucesso() {
-		enter_Username("Isaque478");
+		enter_Username("Isaque584");
 		enter_Email("isaque.silva@rsinet.com.br");
 		enter_Password("Concret03");
 		enter_ConfirmPassword("Concret03");

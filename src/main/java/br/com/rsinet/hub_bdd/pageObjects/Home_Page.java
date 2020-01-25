@@ -7,13 +7,17 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
+import dataProvider.ConfigFileReader;
+
 public class Home_Page {
-
-	WebDriver driver;
-
+ WebDriver driver;
+ ConfigFileReader configFileReader;
+ 
+ 
 	public Home_Page(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
+		configFileReader = new ConfigFileReader();
 	}
 
 	@FindBy(how = How.ID, using = "menuUserLink")
@@ -33,10 +37,10 @@ public class Home_Page {
 
 	public void perform_Search(String search) {
 		driver.navigate().to("http://advantageonlineshopping.com/#/" + search + "&post_type=product");
-	}
+		}
 
-	public void navigateTo_HomePage() {
-		driver.get("http://advantageonlineshopping.com/#/");
-	}
+		public void navigateTo_HomePage() {
+			driver.get("http://advantageonlineshopping.com/#/");
+		}
 
 }

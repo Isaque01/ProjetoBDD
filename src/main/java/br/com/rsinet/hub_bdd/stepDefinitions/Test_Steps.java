@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import br.com.rsinet.hu_bdd.Manager.PageObjectManager;
 import br.com.rsinet.hub_bdd.pageObjects.Home_Page;
 import br.com.rsinet.hub_bdd.pageObjects.ProdutoCategoria_Page;
 import br.com.rsinet.hub_bdd.pageObjects.Produto_Page;
@@ -15,31 +16,42 @@ import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Então;
 
 public class Test_Steps {
-
 	WebDriver driver;
+	Home_Page homePage;
+	Produto_Page produtoPage;
+	ProdutoCategoria_Page produtoCategoriaPage;
+	Register_Page registroPage;
+	PageObjectManager PageObjectManager;
+	//ConfigFileReader configFileReader;
+	
+
 
 	@Dado("^O usuário fornecido está na página inicial$")
 	public void o_usuário_fornecido_está_na_página_inicial() throws Throwable {
-		driver = new ChromeDriver();
+	    driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.get("http://advantageonlineshopping.com/#/");
+		PageObjectManager = new PageObjectManager(driver);
+		homePage = PageObjectManager.getHome_Page();
+		homePage.navigateTo_HomePage();
 
 	}
 
 	@Quando("^o usuário navega para a página de cadastro$")
 	public void o_usuário_navega_para_a_página_de_cadastro() throws Throwable {
-		Home_Page home = new Home_Page(driver);
-		home.Click_Username();
-		home.Click_Create();
+		homePage.perform_Search(null);
+		// Home_Page home = new Home_Page(driver);
+		homePage.Click_Username();
+		homePage.Click_Create();
 
 	}
 
-	//Pagina cadastro com sucesso
+	// Pagina cadastro com sucesso
 	@E("^o usuário digita os dados corretos$")
 	public void o_usuário_digita_os_dados_corretos() throws Throwable {
-		Register_Page register = new Register_Page(driver);
-		register.CadastroSucesso();
+		registroPage = PageObjectManager.getRegisterPage();
+		registroPage.CadastroSucesso();
 
 	}
 
@@ -49,12 +61,12 @@ public class Test_Steps {
 		System.out.println("lougado com sucesso");
 
 	}
-	
-    // Pagina de cadastro invalido 
+
+	// Pagina de cadastro invalido
 	@E("^o usuário digita os dados incorretos$")
 	public void o_usuário_digita_os_dados_incorretos() throws Throwable {
-		Register_Page register = new Register_Page(driver);
-		register.CadastroErro();
+		registroPage = PageObjectManager.getRegisterPage();
+		registroPage.CadastroErro();
 
 	}
 
@@ -67,17 +79,17 @@ public class Test_Steps {
 	// busca produto valido pela lupa com sucesso
 	@Quando("^o usuário clica na barra de pesquisa$")
 	public void o_usuário_clica_na_barra_de_pesquisa() throws Throwable {
-		Produto_Page produto = new Produto_Page(driver);
-		produto.click_lupa();
+		produtoPage = PageObjectManager.getProdutoPage();
+		produtoPage.click_lupa();
 
 	}
 
 	@E("^digitar o nome do produto$")
 	public void digitar_o_nome_do_produto() throws Throwable {
-		Produto_Page digita = new Produto_Page(driver);
-		digita.enter_autoComplete("Mouse");
-		digita.click_btnfechar();
-		digita.Click_mouse();
+		produtoPage = PageObjectManager.getProdutoPage();
+		produtoPage.enter_autoComplete("Mouse");
+		produtoPage.click_btnfechar();
+		produtoPage.Click_mouse();
 
 	}
 
@@ -86,11 +98,12 @@ public class Test_Steps {
 		System.out.println("Produto encontrado com sucesso");
 
 	}
-     // busca produto pela lupa invalido
+
+	// busca produto pela lupa invalido
 	@Quando("^digitar o nome do produto invalido$")
 	public void digitar_o_nome_do_produto_invalido() throws Throwable {
-		Produto_Page digita = new Produto_Page(driver);
-		digita.enter_autoComplete("carro");
+		produtoPage = PageObjectManager.getProdutoPage();
+	    produtoPage.enter_autoComplete("carro");
 	}
 
 	@Então("^será direcionado para a página produtos não existente$")
@@ -98,21 +111,20 @@ public class Test_Steps {
 		System.out.println("Prduto na existe");
 
 	}
-	
+
 	// buscar produto por categoria valido
 
 	@Quando("^clicar na categoria selecionada$")
 	public void clicar_na_categoria_selecionada() throws Throwable {
-		ProdutoCategoria_Page clicar = new ProdutoCategoria_Page(driver);
-		clicar.categoria();
-		
+		produtoCategoriaPage = PageObjectManager.getProCategoria_Page();
+	    produtoCategoriaPage.categoria();
 
 	}
 
 	@E("^clique no tablet escolhido$")
 	public void clique_no_tablet_escolhido() throws Throwable {
-		ProdutoCategoria_Page Produto = new ProdutoCategoria_Page(driver);
-		Produto.clicaProduto();
+		produtoCategoriaPage = PageObjectManager.getProCategoria_Page();
+		produtoCategoriaPage.clicaProduto();
 
 	}
 
@@ -121,23 +133,24 @@ public class Test_Steps {
 
 		System.out.println("Produto escolhi com sucesso");
 	}
-	//busca produto categori invalido
-	
+	// busca produto categori invalido
+
 	@Quando("^o Usuario clicar para ver detalhes do laptop$")
 	public void o_Usuario_clicar_para_ver_detalhes_do_laptop() throws Throwable {
-		ProdutoCategoria_Page VerDetalhe = new ProdutoCategoria_Page(driver);
-		VerDetalhe.clicaDetalhe();
-	    
+		produtoCategoriaPage = PageObjectManager.getProCategoria_Page();
+		produtoCategoriaPage.clicaDetalhe();
+
 	}
+
 	@E("^clicar no laptop$")
 	public void clicar_no_laptop() throws Throwable {
-		ProdutoCategoria_Page laptop = new ProdutoCategoria_Page(driver);
-		laptop.clicaDetalhe();
+		produtoCategoriaPage = PageObjectManager.getProCategoria_Page();
+		produtoCategoriaPage.clicaDetalhe();
 	}
 
 	@Então("^Será exibida a página de outro laptop$")
 	public void será_exibida_a_página_de_outro_laptop() throws Throwable {
-	   System.out.println("Laptop errado");
+		System.out.println("Laptop errado");
 	}
 
 }
