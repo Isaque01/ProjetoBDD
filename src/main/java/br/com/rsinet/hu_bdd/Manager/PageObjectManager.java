@@ -28,8 +28,10 @@ public class PageObjectManager {
 	public Register_Page getRegisterPage() {
 		return(registerPage == null) ? registerPage = new Register_Page(driver): registerPage;
 	}
-	public ProdutoCategoria_Page getProCategoria_Page() {
+	public ProdutoCategoria_Page getProdutoCategoriaPage() {
 		return(produtocategoriapage == null) ? produtocategoriapage = new ProdutoCategoria_Page(driver): produtocategoriapage;
 		
+		
 	}
+	
 }

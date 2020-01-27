@@ -7,13 +7,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
+import br.com.rsinet.hu_bdd.Manager.FileReaderManager;
 import dataProvider.ConfigFileReader;
 
 public class Home_Page {
- WebDriver driver;
- ConfigFileReader configFileReader;
- 
- 
+	WebDriver driver;
+	ConfigFileReader configFileReader;
+
 	public Home_Page(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -36,11 +36,14 @@ public class Home_Page {
 	}
 
 	public void perform_Search(String search) {
-		driver.navigate().to("http://advantageonlineshopping.com/#/" + search + "&post_type=product");
-		}
+		driver.navigate().to(FileReaderManager.getInstance().getConfigReader().getApplicationUrl() + "/?s=" + search
+				+ "&post_type=product");
+	}
 
-		public void navigateTo_HomePage() {
-			driver.get("http://advantageonlineshopping.com/#/");
-		}
+	public void navigateTo_HomePage() {
+		driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
+	}
+	
+	
 
 }

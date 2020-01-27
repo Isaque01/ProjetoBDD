@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Produto_Page {
-	
+
 	WebDriver driver;
 
 	public Produto_Page(WebDriver driver) {
@@ -32,20 +32,20 @@ public class Produto_Page {
 	public void enter_autoComplete(String autoComplete) {
 		Complete.sendKeys(autoComplete + Keys.ENTER);
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "//*[@id=\"search\"]/div/div")
-    private WebElement btnfechar;
-	
+	private WebElement btnfechar;
+
 	@FindBy(how = How.XPATH, using = "//*[@id=\"searchPage\"]/div[3]/div/div/div[2]/ul/li[1]")
-    private WebElement mouseWait;
-	
+	private WebElement mouseWait;
+
 	public void click_btnfechar() throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.visibilityOf(mouseWait));
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", btnfechar);
 	}
-	
+
 	@FindBy(how = How.LINK_TEXT, using = "HP Z3200 Wireless Mouse")
 	private WebElement mouse;
 
@@ -56,7 +56,5 @@ public class Produto_Page {
 		executor.executeScript("arguments[0].click();", mouse);
 
 	}
-	
-
 
 }

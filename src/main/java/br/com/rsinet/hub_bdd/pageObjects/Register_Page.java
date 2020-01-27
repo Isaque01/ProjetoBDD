@@ -104,17 +104,15 @@ public class Register_Page {
 	}
 
 	public void clickAgree() {
-
 		chkAgree.click();
 	}
 
 	public void clickBtnRegister() {
-
 		btnRegister.click();
 	}
 
 	public void CadastroSucesso() {
-		enter_Username("Isaque584");
+		enter_Username("Isaque598");
 		enter_Email("isaque.silva@rsinet.com.br");
 		enter_Password("Concret03");
 		enter_ConfirmPassword("Concret03");
@@ -129,8 +127,9 @@ public class Register_Page {
 		clickAgree();
 		clickBtnRegister();
 	}
+
 	public void CadastroErro() {
-		enter_Username("Isaque");
+		enter_Username("Isaque56");
 		enter_Email("isaque.silva@rsinet.com.br");
 		enter_Password("Concret03");
 		enter_ConfirmPassword("Concret03");
@@ -146,4 +145,6 @@ public class Register_Page {
 		clickBtnRegister();
 	}
 	
+	
+
 }
