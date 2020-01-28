@@ -1,14 +1,14 @@
-Feature: Pesquisa ação
+Feature: Pesquisa de Produto Pela Lupa na Tela inicial
 
  
-@Buscadeprodutos
+@Buscadeprodutos @Valido
 Scenario: Página de Busca Produto valido
     Given O usuário fornecido está na página inicial
     When o usuário clica na barra de pesquisa
     And digitar o nome do produto
     Then será direcionado para a página produtos
     
-@Buscadeprodutoerro    
+@Buscadeprodutos @Invalido    
     Scenario: Página de Busca Produto Erro
      Given O usuário fornecido está na página inicial
      When o usuário clica na barra de pesquisa

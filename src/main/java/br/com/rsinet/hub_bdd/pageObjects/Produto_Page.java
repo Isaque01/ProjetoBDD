@@ -25,19 +25,38 @@ public class Produto_Page {
 	@FindBy(how = How.ID, using = "autoComplete")
 	private WebElement Complete;
 
+	@FindBy(how = How.ID, using = "searchPage")
+	private WebElement page;
+	
+	@FindBy(how = How.XPATH, using = "//*[@id=\"search\"]/div/div")
+	private WebElement btnfechar;
+	
+	@FindBy(how = How.XPATH, using = "//*[@id=\"searchPage\"]/div[3]/div/div/div[2]/ul/li[1]")
+	private WebElement mouseWait;
+	
+	@FindBy(how = How.LINK_TEXT, using = "HP Z3200 Wireless Mouse")
+	private WebElement mouse;
+	
+	@FindBy(how = How.XPATH, using = "//*[@id=\"productProperties\"]/div[3]/button")
+	private WebElement addCart;
+	
+	@FindBy(how = How.XPATH, using = "//*[@id=\"Description\"]/h1")
+	private WebElement msgSucesso;
+	
+	@FindBy(how = How.XPATH, using = "//*[@id=\"searchPage\"]/div[3]/div/label/span")
+	private WebElement msgErro;
+	
+	
 	public void click_lupa() {
 		lupa.click();
 	}
 
 	public void enter_autoComplete(String autoComplete) {
 		Complete.sendKeys(autoComplete + Keys.ENTER);
+		WebDriverWait wait1 = new WebDriverWait(driver, 10);
+		wait1.until(ExpectedConditions.visibilityOf( page));
 	}
 
-	@FindBy(how = How.XPATH, using = "//*[@id=\"search\"]/div/div")
-	private WebElement btnfechar;
-
-	@FindBy(how = How.XPATH, using = "//*[@id=\"searchPage\"]/div[3]/div/div/div[2]/ul/li[1]")
-	private WebElement mouseWait;
 
 	public void click_btnfechar() throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -46,15 +65,25 @@ public class Produto_Page {
 		executor.executeScript("arguments[0].click();", btnfechar);
 	}
 
-	@FindBy(how = How.LINK_TEXT, using = "HP Z3200 Wireless Mouse")
-	private WebElement mouse;
-
+	
 	public void Click_mouse() {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.elementToBeClickable(mouse));
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", mouse);
 
+		WebDriverWait wait1 = new WebDriverWait(driver, 10);
+		wait1.until(ExpectedConditions.visibilityOf(addCart));
+		
 	}
+	
+	public String getSucesso() {
+		return msgSucesso.getText();
+	}
+	
+	public String getErro() {
+		return msgErro.getText();
+	}
+	
 
 }

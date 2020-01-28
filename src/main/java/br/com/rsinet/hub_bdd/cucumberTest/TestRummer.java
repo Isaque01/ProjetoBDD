@@ -14,7 +14,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "Feature", glue = { "br.com.rsinet.hub_bdd.stepDefinitions" }, 
 plugin = {"com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html" }, monochrome = true
-//tags = {"@Buscaprodutoimageminvalido"}
+//tags = {"@Buscadeprodutos"," @Invalido " }
 )
 public class TestRummer {
 	@AfterClass

@@ -5,11 +5,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Register_Page {
+	
+	WebDriver driver;
+	
 	public Register_Page(WebDriver driver) {
+		
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
+		
 	}
 
 	@FindBy(how = How.NAME, using = "usernameRegisterPage")
@@ -53,7 +61,13 @@ public class Register_Page {
 
 	@FindBy(how = How.ID, using = "register_btnundefined")
 	private WebElement btnRegister;
+	
+	@FindBy(how = How.XPATH, using = "//*[@id=\"menuUserLink\"]/span")
+	private WebElement espera;
+	
 
+	
+	
 	public void enter_Username(String userName) {
 		txtbxUsername.sendKeys(userName);
 	}
@@ -111,8 +125,8 @@ public class Register_Page {
 		btnRegister.click();
 	}
 
-	public void CadastroSucesso() {
-		enter_Username("Isaque598");
+	public void CadastroSucesso() throws InterruptedException {
+		enter_Username("IsaqueLyu");
 		enter_Email("isaque.silva@rsinet.com.br");
 		enter_Password("Concret03");
 		enter_ConfirmPassword("Concret03");
@@ -126,10 +140,17 @@ public class Register_Page {
 		enter_Postal("06436350");
 		clickAgree();
 		clickBtnRegister();
-	}
+		
+		
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(espera));
+		
+	
+		
+}
 
-	public void CadastroErro() {
-		enter_Username("Isaque56");
+	public void CadastroErro() throws InterruptedException {
+		enter_Username("IsaqueLyu");
 		enter_Email("isaque.silva@rsinet.com.br");
 		enter_Password("Concret03");
 		enter_ConfirmPassword("Concret03");
@@ -140,9 +161,14 @@ public class Register_Page {
 		enter_City("Barueri");
 		enter_Address("Rua: Juliana N°78");
 		enter_State("Sao Paulo");
-		enter_Postal("06436350");
+		enter_Postal("064363500000");
 		clickAgree();
 		clickBtnRegister();
+		
+
+		
+		
+		
 	}
 	
 	

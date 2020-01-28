@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProdutoCategoria_Page {
 	WebDriver driver;
@@ -15,9 +17,22 @@ public class ProdutoCategoria_Page {
 		PageFactory.initElements(driver, this);
 	}
 
-	// Pesquisa pela catecoria na tela principal com sucesso
+	// Pesquisa pela categoria na tela principal com sucesso
+	
+	@FindBy(how = How.LINK_TEXT, using = "HP ElitePad 1000 G2 Tablet")
+	private WebElement tabletHP;
+	
+	@FindBy(how = How.XPATH, using = "//*[@id=\"productProperties\"]/div[3]/button")
+	private WebElement AddCart;
+	
 	@FindBy(how = How.ID, using = "tabletsImg")
 	private WebElement tablet;
+	
+	@FindBy(how = How.XPATH, using = "//*[@id=\"popular_items\"]/div/div[2]/a")
+	private WebElement Elitebook;
+	
+	@FindBy(how = How.XPATH, using = "//*[@id=\"productProperties\"]/div[3]/button")
+	private WebElement addToCart;
 	
 	public void categoria() {
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
@@ -25,21 +40,25 @@ public class ProdutoCategoria_Page {
 		
 	}
 	
-	@FindBy(how = How.LINK_TEXT, using = "HP ElitePad 1000 G2 Tablet")
-	private WebElement tabletHP;
 	
-	public void clicaProduto() {
+	
+	public void clicaProduto() throws InterruptedException {
 		tabletHP.click();
+		
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.visibilityOf(addToCart));
+		
 	}
 
 	//busca categoria pela tela principal com Erro
 	
-	@FindBy(how = How.XPATH, using = "//*[@id=\"details_10\"]")
-	private WebElement Elitebook;
 	
-	public void clicaDetalhe() {
+	public void clicaDetalhe() throws InterruptedException {
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", Elitebook);
+		
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.visibilityOf(addToCart));
 		
 	}
 	
